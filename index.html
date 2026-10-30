@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>İyi ki doğdun! 🐾</title>
+<meta name="theme-color" content="#fff1e6">
+<meta property="og:title" content="Sana küçük bir sürprizim var 🐾">
+<meta property="og:description" content="Aç bakalım...">
+<meta property="og:type" content="website">
+<!-- Link önizleme görseli -->
+<meta property="og:image" content="https://soydasmotosiklet.github.io/sudenaz/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="preview.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff1e6; --ink:#4b2e2a; --muted:#8a6a63;
+  --pink:#ff8fab; --pink-d:#f0628a; --peach:#ffb38a; --lav:#cbb7ff; --mint:#9fe0c9; --sun:#ffd166;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Nunito',system-ui,-apple-system,sans-serif;color:var(--ink);min-height:100vh;min-height:100dvh;overflow-x:hidden;touch-action:manipulation;
+  background:
+    radial-gradient(circle at 15% 8%,#ffe4ee 0,transparent 42%),
+    radial-gradient(circle at 92% 35%,#ffeedd 0,transparent 40%),
+    radial-gradient(circle at 10% 85%,#efe6ff 0,transparent 40%),
+    var(--bg);
+  background-attachment:fixed;
+}
+h1,h2,h3,.display,button,.hint{font-family:'Baloo 2',system-ui,sans-serif}
+.hidden{display:none!important}
+html,body{overflow-x:hidden;overflow-x:clip}
+#after{width:100%;max-width:440px;min-width:0}
+.block{min-width:0}
+
+/* ---------- ekranlar ---------- */
+.screen{display:none;min-height:100vh;min-height:100dvh;padding:28px 20px calc(28px + env(safe-area-inset-bottom));position:relative;z-index:1}
+.screen.active{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:fadeIn .7s ease}
+#party.active{justify-content:flex-start;padding-top:40px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-weight:800;color:var(--pink-d);letter-spacing:.03em;font-size:16px;margin-bottom:6px}
+h1{font-size:clamp(28px,8.5vw,40px);line-height:1.1;font-weight:800}
+.sub{color:var(--muted);font-size:15px;line-height:1.45;margin-top:6px}
+.small{font-size:13px}
+
+/* ---------- arka plan pati izleri ---------- */
+.bg-paws{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;z-index:0}
+.bg-paws span{position:absolute;bottom:-40px;animation:floatUp linear infinite}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(40deg)}}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+/* ---------- kedi ---------- */
+.cat,#petWrap,.gift,.cake{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.cat{position:relative;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.cat svg{width:100%;height:auto;display:block;overflow:visible}
+.cat .tail{transform-box:view-box;transform-origin:150px 168px;animation:wag 1.6s ease-in-out infinite}
+@keyframes wag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(14deg)}}
+.cat .eyes-open{transform-box:view-box;transform-origin:100px 86px;animation:blink 4.5s infinite}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.cat .eyes-happy,.cat .eyes-sleep{display:none}
+.cat.happy .eyes-open{display:none}.cat.happy .eyes-happy{display:inline}
+.cat.sleepy .eyes-open{display:none}.cat.sleepy .eyes-sleep{display:inline}
+.cat.sleepy .tail{animation-duration:5s}
+.cat.sleepy svg{animation:breathe 3s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes breathe{50%{transform:scale(1.03,.98)}}
+
+/* ---------- kilit ekranı ---------- */
+#sleepCat{width:min(52vw,210px);margin:22px auto 4px;cursor:pointer}
+.zzz{position:relative;height:0}
+.zzz span{position:absolute;font-family:'Baloo 2';font-weight:800;color:var(--lav);font-size:22px;animation:zz 3s ease-in infinite;opacity:0}
+.zzz span:nth-child(1){left:58px;top:-200px}
+.zzz span:nth-child(2){left:72px;top:-210px;animation-delay:1s;font-size:26px}
+.zzz span:nth-child(3){left:88px;top:-220px;animation-delay:2s;font-size:32px}
+@keyframes zz{0%{opacity:0;transform:translate(0,0)}30%{opacity:1}100%{opacity:0;transform:translate(20px,-40px)}}
+.countdown{display:flex;gap:10px;justify-content:center;margin-top:22px}
+.countdown div{background:#fff;border-radius:18px;width:72px;padding:10px 0 8px;box-shadow:0 8px 20px -10px rgba(160,90,70,.35)}
+.countdown b{display:block;font-family:'Baloo 2';font-size:30px;line-height:1;color:var(--pink-d)}
+.countdown span{font-size:12px;color:var(--muted);font-weight:700}
+
+/* ---------- hediye kutusu ---------- */
+.gift{position:relative;width:260px;height:300px;width:min(72vw,260px);height:calc(min(72vw,260px) * 1.1538);padding:0;-webkit-appearance:none;appearance:none;background:none;border:0;margin:26px auto 10px;cursor:pointer}
+.gift .peek{position:absolute;left:50%;bottom:47%;width:62%;transform:translateX(-50%);transition:transform .7s cubic-bezier(.3,1.6,.5,1);z-index:0}
+.boxwrap{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;animation:wiggle 2.6s ease-in-out infinite;transform-origin:50% 100%}
+.box{position:absolute;bottom:0;left:6%;right:6%;height:45%;border-radius:18px;
+  background:linear-gradient(90deg,transparent 43%,var(--sun) 43% 57%,transparent 57%),var(--pink);
+  box-shadow:inset 0 -12px 0 rgba(0,0,0,.06),0 14px 24px -14px rgba(200,80,110,.6)}
+.lid{position:absolute;bottom:43%;left:1%;right:1%;height:14%;border-radius:14px;z-index:2;
+  background:linear-gradient(90deg,transparent 43%,var(--sun) 43% 57%,transparent 57%),var(--pink-d);
+  transition:transform .8s cubic-bezier(.2,.8,.3,1),opacity .8s}
+.lid::before,.lid::after{content:'';position:absolute;bottom:85%;width:17%;height:62%;border:6px solid var(--sun);border-radius:50%}
+.lid::before{left:32%;transform:rotate(-25deg)}
+.lid::after{right:32%;transform:rotate(25deg)}
+@keyframes wiggle{0%,78%,100%{transform:rotate(0)}82%{transform:rotate(-4deg)}86%{transform:rotate(4deg)}90%{transform:rotate(-3deg)}94%{transform:rotate(2deg)}}
+.gift.open .boxwrap{animation:none}
+.gift.open .lid{transform:translate(-45%,-260%) rotate(-35deg);opacity:0}
+.gift.open .peek{transform:translate(-50%,-34%) scale(1.08)}
+.pulse{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.07);opacity:.75}}
+.hint{font-weight:700;font-size:20px;color:var(--pink-d)}
+
+/* ---------- parti ---------- */
+.hero{max-width:460px;width:100%}
+.title{font-size:clamp(36px,11vw,56px);line-height:1;color:var(--ink)}
+.title span{display:inline-block;animation:bob 1.8s ease-in-out infinite;animation-delay:calc(var(--i)*.08s)}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-3deg)}}
+.name{font-size:clamp(48px,15vw,80px);line-height:1.05;color:var(--pink-d);margin-top:4px;
+  text-shadow:3px 3px 0 #fff,7px 7px 0 rgba(255,143,171,.3)}
+.cats-row{display:flex;justify-content:center;align-items:flex-end;gap:6px;margin-top:14px}
+.cats-row .cat{width:86px}
+.cats-row .cat:nth-child(2){width:104px}
+.cats-row .cat:nth-child(1) .tail{animation-delay:-.4s}
+.cats-row .cat:nth-child(3) .tail{animation-delay:-.9s}
+
+.block{width:100%;max-width:440px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-radius:28px;padding:24px 18px;margin:18px auto;box-shadow:0 12px 30px -14px rgba(160,90,70,.3)}
+.block h3{font-size:24px;line-height:1.15}
+
+.cake{width:min(82vw,330px);margin:12px auto 6px}
+.cake svg{width:100%;height:auto;display:block;overflow:visible}
+.candle{cursor:pointer}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flicker .28s ease-in-out infinite alternate}
+.cake.windy .flame{animation-duration:.07s}
+@keyframes flicker{from{transform:scale(1,1) rotate(-4deg)}to{transform:scale(.88,1.12) rotate(4deg)}}
+.glow{animation:glow 1.2s ease-in-out infinite alternate}
+@keyframes glow{to{opacity:.55}}
+.flame,.glow{transition:opacity .25s}
+.candle.out .flame,.candle.out .glow{opacity:0}
+.smoke{opacity:0;fill:#cfc3bd}
+.candle.out .smoke{transform-box:fill-box;transform-origin:50% 100%;animation:smoke 1.4s ease-out forwards}
+@keyframes smoke{0%{opacity:.9;transform:translateY(0) scale(.6)}100%{opacity:0;transform:translateY(-22px) scale(1.4)}}
+
+.btn{font-size:18px;font-weight:700;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:12px 24px;margin-top:10px;
+  box-shadow:0 5px 0 #2a1714;cursor:pointer;transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #2a1714}
+.btn.listening{background:var(--pink-d);box-shadow:0 5px 0 #b8406a}
+.meter{height:8px;border-radius:9px;background:#f3e3da;margin:14px auto 0;max-width:220px;overflow:hidden;opacity:0;transition:opacity .3s}
+.meter.on{opacity:1}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--pink));border-radius:9px;transition:width .08s}
+
+.wish{background:linear-gradient(135deg,#fff 0,#fff5e0 100%)}
+.wish .big{font-size:46px;line-height:1}
+
+.fortune{margin:16px auto 6px;border-radius:24px;padding:22px 18px;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#ece4ff,#ffe0ea);box-shadow:0 10px 20px -14px rgba(120,60,50,.5)}
+.fortune .em{font-size:44px;line-height:1}
+.fortune p{font-size:19px;font-weight:800;line-height:1.35;margin-top:10px}
+.fortune.reveal{animation:reveal .55s cubic-bezier(.3,1.5,.5,1)}
+@keyframes reveal{0%{transform:rotateY(90deg) scale(.9);opacity:0}100%{transform:none;opacity:1}}
+
+#petWrap{position:relative;width:min(58vw,230px);margin:14px auto 0;touch-action:none}
+#petCat{cursor:grab;transition:transform .15s}
+#petCat.happy{transform:scale(1.04) rotate(-2deg)}
+.bit{position:absolute;pointer-events:none;font-family:'Baloo 2';font-weight:800;color:var(--pink-d);font-size:20px;animation:bit 1.3s ease-out forwards}
+@keyframes bit{from{opacity:1;transform:translate(0,0) scale(.8)}to{opacity:0;transform:translate(var(--dx),-90px) scale(1.2)}}
+.love{height:14px;border-radius:9px;background:#f3e3da;margin:16px auto 0;max-width:240px;overflow:hidden}
+.love i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--peach),var(--pink-d));transition:width .12s}
+
+.letter{text-align:left;background:
+  repeating-linear-gradient(transparent 0 31px,#f5dfd6 31px 32px),#fffdf8;padding:26px 22px 22px}
+.letter h3{margin-bottom:8px}
+#letterText{white-space:pre-line;overflow-wrap:anywhere;font-size:17px;line-height:32px;min-height:96px}
+#letterText.typing::after{content:'▍';color:var(--pink-d);animation:caret .8s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.sign{font-family:'Baloo 2';font-weight:700;font-size:20px;color:var(--pink-d);text-align:right;margin-top:6px;opacity:0;transition:opacity .8s}
+.sign.on{opacity:1}
+
+footer{font-size:13px;color:var(--muted);margin:10px 0 30px}
+.music{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:60;width:46px;height:46px;border-radius:50%;border:0;background:#fff;
+  font-size:22px;box-shadow:0 6px 16px -6px rgba(120,60,50,.4);cursor:pointer}
+.music.playing{animation:pulse 1s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+<div class="bg-paws" id="bgPaws" aria-hidden="true"></div>
+<button id="musicBtn" class="music hidden" aria-label="Doğum günü şarkısını çal">🎵</button>
+
+<!-- 1) KİLİT: doğum gününden önce açılırsa -->
+<section id="lock" class="screen">
+  <p class="eyebrow">Psst... 🤫</p>
+  <h1>Biraz erken geldin!</h1>
+  <div class="cat sleepy" id="sleepCat"></div>
+  <div class="zzz"><span>z</span><span>z</span><span>Z</span></div>
+  <p class="sub">Bu kedi <b>13 Kasım</b>'ı bekliyor.<br>Sürpriz o gün açılacak.</p>
+  <div class="countdown">
+    <div><b id="cdD">0</b><span>gün</span></div>
+    <div><b id="cdH">0</b><span>saat</span></div>
+    <div><b id="cdM">0</b><span>dakika</span></div>
+    <div><b id="cdS">0</b><span>saniye</span></div>
+  </div>
+</section>
+
+<!-- 2) HEDİYE KUTUSU -->
+<section id="gift" class="screen">
+  <p class="eyebrow">Hey <span class="nm"></span>! 👋</p>
+  <h1>Bir kedi sana<br>bir paket getirdi</h1>
+  <button class="gift" id="giftBtn" aria-label="Hediyeyi aç">
+    <div class="cat peek" id="peekCat"></div>
+    <div class="boxwrap"><div class="lid"></div><div class="box"></div></div>
+  </button>
+  <p class="hint pulse">Kutuya dokun 🐾</p>
+</section>
+
+<!-- 3) PARTİ -->
+<section id="party" class="screen">
+  <header class="hero">
+    <p class="eyebrow" id="dateLine">13 Kasım 🎉</p>
+    <h1 class="title" id="title"></h1>
+    <h2 class="name nm"></h2>
+    <div class="cats-row">
+      <div class="cat" data-c="gray"></div>
+      <div class="cat" data-c="orange"></div>
+      <div class="cat" data-c="black"></div>
+    </div>
+  </header>
+
+  <section class="block" id="cakeBlock">
+    <h3 id="cakeTitle">Önce mumlar! 🕯️</h3>
+    <p class="sub" id="cakeSub">Gözlerini kapat, bir dilek tut…<br>sonra telefona üfle ya da mumlara tek tek dokun.</p>
+    <div class="cake" id="cake"></div>
+    <button class="btn" id="micBtn">🎤 Üflemeye hazırım</button>
+    <div class="meter" id="meter"><i id="meterBar"></i></div>
+    <p class="sub small" id="micHint"></p>
+  </section>
+
+  <div id="after" class="hidden">
+    <section class="block wish" id="wish">
+      <div class="big">📝🐾</div>
+      <h3 style="margin-top:8px">Dileğin kayda alındı!</h3>
+      <p class="sub">Kedi komitesi oy birliğiyle onayladı.<br>Gerçekleşmesi an meselesi.</p>
+    </section>
+
+    <section class="block">
+      <h3>Yeni yaşın için kedi falı 🔮</h3>
+      <p class="sub">Kedi kahveni içti, fincanı kapattı…</p>
+      <div class="fortune" id="fortune"><div class="em">☕</div><p>Fincan soğuyor, bakalım ne çıkacak?</p></div>
+      <button class="btn" id="fortuneBtn">🐾 Falıma bak</button>
+    </section>
+
+    <section class="block">
+      <h3>Bu kediyi sev 😺</h3>
+      <p class="sub">Kedinin üstüne basılı tut, mırlamasını dinle</p>
+      <div id="petWrap"><div class="cat" id="petCat"></div></div>
+      <div class="love"><i id="loveBar"></i></div>
+      <p class="sub small" id="loveTxt">Kedi mutluluğu: %0</p>
+    </section>
+
+    <section class="block letter" id="letter">
+      <h3>Sana bir not ✉️</h3>
+      <p id="letterText"></p>
+      <p class="sign" id="sign"></p>
+    </section>
+
+    <footer id="foot"></footer>
+  </div>
+</section>
+
+<script>
+/* =========================================================
+   🛠️  BURAYI DÜZENLE — tüm kişisel içerik burada
+   ========================================================= */
+const CONFIG = {
+  name: "Sudenaz",                       // 👈 onun adı
+  from: "İrfan",                         // 👈 senin adın
+  birthday: "2026-11-13T00:00:00+03:00", // doğum günü (Türkiye saati)
+  lockUntilBirthday: false,              // true yaparsan 13 Kasım'dan önce açılınca geri sayım gösterir
+  secretTaps: 0,                         // kilit ekranında uyuyan kediye 7 kez dokununca açılır (test için). Kapatmak için 0
+  candles: 5,                            // mum sayısı (en fazla 9)
+  fortunes: [                           // kedi falı (istediğini ekle/çıkar)
+    { emoji: "🐈", text: "Bu yıl yolun çok kediyle kesişecek. Hepsi seni sevecek." },
+    { emoji: "📦", text: "Kapında bir sürpriz var. Muhtemelen kargo. Belki de bir kedi." },
+    { emoji: "😹", text: "Yeni yaşında kahkahan mırlamadan bile yüksek çıkacak." },
+    { emoji: "🍞", text: "Şans senden yana: düşen ekmek hep reçelsiz tarafına düşecek." },
+    { emoji: "🐾", text: "Bir kedi bu yıl dokuz canından birini sana emanet etti. Dikkatli kullan." },
+    { emoji: "☕", text: "Sıcak bir köşe, güzel bir kahve ve bol huzur. Kediler bunu sana yakıştırdı." },
+    { emoji: "📱", text: "Canın sıkıldığında tam doğru kedi videosu karşına çıkacak." },
+    { emoji: "😌", text: "Doğum günü mesajlarını zamanında alacağın bir yıl. Bu sefer söz." },
+  ],
+  message:
+`Geçen sene mesaj atmayınca ÇOKKK AYIP demiştin (hâlâ aklımda 😅)
+
+Şimdi hem telafi, hem de gerçekten…
+
+İYİKİİİİİİİİİİİİİİİİİİİİİİİİİİ DOĞDUNNNNNNNNNNNNN ARKADAŞIMMMMMMMMM 🎉🐾`,
+};
+
+/* ========================================================= */
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const fill = (str) => str.replaceAll("{name}", CONFIG.name);
+
+/* ---------- kedi çizimi (SVG) ---------- */
+const PALETTES = {
+  orange:{body:"#f4a261",stripe:"#d9813f",belly:"#ffe8d1",eye:"#2b1b17",line:"#2b1b17"},
+  gray:  {body:"#aeb0c2",stripe:"#8a8ca3",belly:"#eeeef5",eye:"#2b1b17",line:"#2b1b17"},
+  black: {body:"#3b3138",stripe:"#3b3138",belly:"#52454d",eye:"#ffd166",line:"#e9ddd7"},
+  cream: {body:"#f3dcc0",stripe:"#ddb88f",belly:"#fff6ec",eye:"#2b1b17",line:"#2b1b17"},
+};
+function catSVG(p = PALETTES.orange){
+  return `<svg viewBox="0 0 200 200" aria-hidden="true">
+  <path class="tail" d="M150 168 C186 160 192 120 172 98" fill="none" stroke="${p.body}" stroke-width="14" stroke-linecap="round"/>
+  <ellipse cx="100" cy="152" rx="54" ry="44" fill="${p.body}"/>
+  <ellipse cx="100" cy="160" rx="30" ry="30" fill="${p.belly}"/>
+  <ellipse cx="77" cy="192" rx="15" ry="8" fill="${p.body}"/>
+  <ellipse cx="123" cy="192" rx="15" ry="8" fill="${p.body}"/>
+  <polygon points="58,66 66,20 97,46" fill="${p.body}" stroke="${p.body}" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="142,66 134,20 103,46" fill="${p.body}" stroke="${p.body}" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="66,56 70,32 87,47" fill="#ffb3c6"/>
+  <polygon points="134,56 130,32 113,47" fill="#ffb3c6"/>
+  <circle cx="100" cy="86" r="46" fill="${p.body}"/>
+  <path d="M100 42 v13 M86 45 l3 11 M114 45 l-3 11" stroke="${p.stripe}" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="74" cy="104" rx="9" ry="6" fill="#ff9fb5" opacity=".55"/>
+  <ellipse cx="126" cy="104" rx="9" ry="6" fill="#ff9fb5" opacity=".55"/>
+  <g class="eyes-open">
+    <ellipse cx="82" cy="86" rx="7" ry="9" fill="${p.eye}"/><ellipse cx="118" cy="86" rx="7" ry="9" fill="${p.eye}"/>
+    <circle cx="84.5" cy="82.5" r="2.7" fill="#fff"/><circle cx="120.5" cy="82.5" r="2.7" fill="#fff"/>
+  </g>
+  <path class="eyes-happy" d="M74 89 q8 -11 16 0 M110 89 q8 -11 16 0" stroke="${p.line}" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path class="eyes-sleep" d="M74 86 q8 7 16 0 M110 86 q8 7 16 0" stroke="${p.line}" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M95 97 h10 l-5 6z" fill="#ff7a9a" stroke="#ff7a9a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M100 104 q-5 7 -11 3 M100 104 q5 7 11 3" stroke="${p.line}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M60 97 h-24 M60 104 l-22 5 M140 97 h24 M140 104 l22 5" stroke="${p.line}" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+</svg>`;
+}
+
+/* ---------- pasta (kedi kulaklı) ---------- */
+function cakeSVG(n){
+  const N = Math.max(1, Math.min(n, 9));
+  const x0 = 92, x1 = 168, step = N > 1 ? (x1 - x0) / (N - 1) : 0;
+  const cols = ["#ff8fab","#9fe0c9","#cbb7ff","#ffd166","#8ecbff"];
+  let candles = "";
+  for (let i = 0; i < N; i++){
+    const cx = N > 1 ? x0 + i * step : 130, c = cols[i % cols.length];
+    candles += `<g class="candle" data-i="${i}">
+      <rect x="${cx-10}" y="12" width="20" height="84" fill="transparent"/>
+      <circle class="glow" cx="${cx}" cy="36" r="15" fill="url(#glow)"/>
+      <rect x="${cx-4}" y="52" width="8" height="40" rx="3" fill="${c}"/>
+      <path d="M${cx-4} 61 l8 -5 M${cx-4} 71 l8 -5 M${cx-4} 81 l8 -5" stroke="#fff" stroke-width="2" opacity=".85"/>
+      <line x1="${cx}" y1="52" x2="${cx}" y2="46" stroke="#4b2e2a" stroke-width="1.6"/>
+      <path class="flame" d="M${cx} 24 C${cx+7} 34 ${cx+6} 46 ${cx} 46 C${cx-6} 46 ${cx-7} 34 ${cx} 24Z" fill="url(#flame)"/>
+      <g class="smoke"><circle cx="${cx}" cy="40" r="3"/><circle cx="${cx+3}" cy="34" r="4"/><circle cx="${cx-2}" cy="27" r="5"/></g>
+    </g>`;
+  }
+  // krema damlaları
+  let d = "M25 106 Q25 88 43 88 H217 Q235 88 235 106 V112";
+  const segs = 8, w = 210 / segs, depths = [24, 12, 18, 9, 22, 14, 20, 11];
+  for (let i = 0; i < segs; i++){
+    const xr = 235 - i * w, xl = xr - w;
+    d += ` Q${(xr + xl) / 2} ${112 + depths[i] * 2} ${xl} 112`;
+  }
+  d += " Z";
+  const sprinkles = [[50,98,"#ffd166",20],[78,94,"#9fe0c9",-30],[150,96,"#cbb7ff",40],[186,93,"#ffd166",-15],[208,100,"#8ecbff",25],[118,97,"#fff",10]]
+    .map(([x,y,c,r]) => `<rect x="${x}" y="${y}" width="9" height="3.5" rx="1.75" fill="${c}" transform="rotate(${r} ${x+4} ${y+2})"/>`).join("");
+  return `<svg viewBox="0 0 260 205" role="img" aria-label="Kedi kulaklı doğum günü pastası">
+  <defs>
+    <radialGradient id="flame" cx="50%" cy="70%" r="60%"><stop offset="0" stop-color="#fffbe0"/><stop offset=".45" stop-color="#ffc94d"/><stop offset="1" stop-color="#ff7a3d"/></radialGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#ffd166" stop-opacity=".75"/><stop offset="1" stop-color="#ffd166" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="130" cy="190" rx="124" ry="12" fill="#fff" stroke="#f1dccf" stroke-width="2"/>
+  <polygon points="34,98 46,52 80,90" fill="#ffc2d4" stroke="#ffc2d4" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="226,98 214,52 180,90" fill="#ffc2d4" stroke="#ffc2d4" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="46,86 50,66 66,84" fill="#ff9fb5"/>
+  <polygon points="214,86 210,66 194,84" fill="#ff9fb5"/>
+  <rect x="25" y="88" width="210" height="98" rx="18" fill="#ffe0b8"/>
+  <path d="${d}" fill="#ffc2d4"/>
+  ${sprinkles}
+  <ellipse cx="100" cy="150" rx="5.5" ry="7" fill="#4b2e2a"/><ellipse cx="160" cy="150" rx="5.5" ry="7" fill="#4b2e2a"/>
+  <circle cx="102" cy="147" r="2" fill="#fff"/><circle cx="162" cy="147" r="2" fill="#fff"/>
+  <ellipse cx="84" cy="164" rx="8" ry="5" fill="#ff9fb5" opacity=".6"/><ellipse cx="176" cy="164" rx="8" ry="5" fill="#ff9fb5" opacity=".6"/>
+  <path d="M125 158 h10 l-5 6z" fill="#ff7a9a" stroke="#ff7a9a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M130 165 q-5 6 -10 2 M130 165 q5 6 10 2" stroke="#4b2e2a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M78 156 h-26 M80 163 l-24 6 M182 156 h26 M180 163 l24 6" stroke="#c98f6b" stroke-width="2" stroke-linecap="round"/>
+  ${candles}
+</svg>`;
+}
+
+/* ---------- ses (Web Audio) ---------- */
+let AC = null, noiseBuf = null;
+function setSession(type){ try{ if (navigator.audioSession) navigator.audioSession.type = type; }catch(e){} }
+function audio(){
+  if (!AC){
+    setSession("playback");   // iPhone sessiz moddayken de ses çıksın
+    const C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return null;
+    AC = new C();
+  }
+  if (AC.state !== "running") AC.resume().catch(() => {});
+  return AC;
+}
+function noise(ctx){
+  if (noiseBuf) return noiseBuf;
+  noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
+  const ch = noiseBuf.getChannelData(0);
+  for (let i = 0; i < ch.length; i++) ch[i] = Math.random() * 2 - 1;
+  return noiseBuf;
+}
+function meow(){
+  const ctx = audio(); if (!ctx) return;
+  const t = ctx.currentTime, o = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+  o.type = "sawtooth";
+  o.frequency.setValueAtTime(520, t);
+  o.frequency.linearRampToValueAtTime(860, t + .14);
+  o.frequency.exponentialRampToValueAtTime(480, t + .6);
+  f.type = "bandpass"; f.Q.value = 2.5;
+  f.frequency.setValueAtTime(900, t);
+  f.frequency.linearRampToValueAtTime(1900, t + .16);
+  f.frequency.exponentialRampToValueAtTime(1000, t + .6);
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(.45, t + .05);
+  g.gain.setValueAtTime(.4, t + .35);
+  g.gain.exponentialRampToValueAtTime(.001, t + .65);
+  o.connect(f).connect(g).connect(ctx.destination);
+  o.start(t); o.stop(t + .7);
+}
+function puff(){
+  const ctx = audio(); if (!ctx) return;
+  const t = ctx.currentTime, s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+  s.buffer = noise(ctx); f.type = "highpass"; f.frequency.value = 900;
+  g.gain.setValueAtTime(.25, t); g.gain.exponentialRampToValueAtTime(.001, t + .25);
+  s.connect(f).connect(g).connect(ctx.destination); s.start(t); s.stop(t + .3);
+}
+function startPurr(){
+  const ctx = audio(); if (!ctx) return () => {};
+  const t = ctx.currentTime;
+  const src = ctx.createBufferSource(); src.buffer = noise(ctx); src.loop = true;
+  const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 260;
+  const amp = ctx.createGain(); amp.gain.value = .5;
+  const lfo = ctx.createOscillator(); lfo.frequency.value = 23;
+  const lfoG = ctx.createGain(); lfoG.gain.value = .5;
+  lfo.connect(lfoG).connect(amp.gain);
+  const master = ctx.createGain(); master.gain.setValueAtTime(0, t); master.gain.linearRampToValueAtTime(1.6, t + .2);
+  src.connect(lp).connect(amp).connect(master).connect(ctx.destination);
+  src.start(t); lfo.start(t);
+  return () => {
+    const n = ctx.currentTime;
+    master.gain.cancelScheduledValues(n); master.gain.setValueAtTime(master.gain.value, n);
+    master.gain.linearRampToValueAtTime(0, n + .25);
+    src.stop(n + .3); lfo.stop(n + .3);
+  };
+}
+// İyi ki doğdun melodisi
+const FREQ = {G4:392,A4:440,B4:493.88,C5:523.25,D5:587.33,E5:659.25,F5:698.46,G5:783.99};
+const SONG = [["G4",.75],["G4",.25],["A4",1],["G4",1],["C5",1],["B4",2],
+              ["G4",.75],["G4",.25],["A4",1],["G4",1],["D5",1],["C5",2],
+              ["G4",.75],["G4",.25],["G5",1],["E5",1],["C5",1],["B4",1],["A4",2],
+              ["F5",.75],["F5",.25],["E5",1],["C5",1],["D5",1],["C5",2.5]];
+let songOn = false;
+function playSong(){
+  const ctx = audio(); if (!ctx || songOn) return;
+  songOn = true; $("#musicBtn").classList.add("playing");
+  const beat = .42, master = ctx.createGain(); master.gain.value = .2; master.connect(ctx.destination);
+  let t = ctx.currentTime + .1;
+  for (const [n, d] of SONG){
+    const dur = d * beat;
+    for (const [mult, type, vol] of [[1, "triangle", 1], [2, "sine", .25]]){
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = type; o.frequency.value = FREQ[n] * mult;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .02);
+      g.gain.exponentialRampToValueAtTime(.001, t + Math.max(dur * .95, .2));
+      o.connect(g).connect(master); o.start(t); o.stop(t + dur + .05);
+    }
+    t += dur;
+  }
+  setTimeout(() => { songOn = false; $("#musicBtn").classList.remove("playing"); }, (t - ctx.currentTime) * 1000);
+}
+
+/* ---------- konfeti ---------- */
+const cv = $("#confetti"), cx = cv.getContext("2d");
+let parts = [], raf = null;
+const COLORS = ["#ff8fab","#ffd166","#9fe0c9","#cbb7ff","#ffb38a","#8ecbff"];
+const EMOJI = ["🐾","🐟","🧶","🐱","🎈"];
+function resize(){
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+addEventListener("resize", resize); resize();
+function addPart(x, y, vx, vy){
+  parts.push({x, y, vx, vy, r: Math.random() * 6.28, vr: (Math.random() - .5) * .3,
+    s: 6 + Math.random() * 6, c: COLORS[Math.random() * COLORS.length | 0],
+    e: Math.random() < .14 ? EMOJI[Math.random() * EMOJI.length | 0] : null});
+}
+function burst(n = 140, x = innerWidth / 2, y = innerHeight / 3){
+  for (let i = 0; i < n; i++){
+    const a = Math.random() * 6.28, sp = 3 + Math.random() * 9;
+    addPart(x, y, Math.cos(a) * sp, Math.sin(a) * sp - 5);
+  }
+  if (!raf) tick();
+}
+function rain(n = 120){
+  for (let i = 0; i < n; i++) addPart(Math.random() * innerWidth, -20 - Math.random() * innerHeight * .8, (Math.random() - .5) * 2, 2 + Math.random() * 3);
+  if (!raf) tick();
+}
+function tick(){
+  cx.clearRect(0, 0, innerWidth, innerHeight);
+  for (const p of parts){
+    p.vx *= .985; p.vy = Math.min(p.vy + .22, 6); p.x += p.vx + Math.sin(p.r) * .6; p.y += p.vy; p.r += p.vr;
+    cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r);
+    if (p.e){ cx.font = `${p.s * 2.4}px serif`; cx.fillText(p.e, -p.s, p.s); }
+    else { cx.fillStyle = p.c; cx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); }
+    cx.restore();
+  }
+  parts = parts.filter(p => p.y < innerHeight + 50);
+  raf = parts.length ? requestAnimationFrame(tick) : (cx.clearRect(0, 0, innerWidth, innerHeight), null);
+}
+
+/* ---------- ekran geçişi ---------- */
+function show(id){
+  $$(".screen").forEach(s => s.classList.toggle("active", s.id === id));
+  scrollTo(0, 0);
+}
+
+/* ---------- kurulum ---------- */
+$$(".nm").forEach(el => el.textContent = CONFIG.name);
+$("#title").innerHTML = Array.from("İyi ki doğdun").map((ch, i) => `<span style="--i:${i}">${ch === " " ? "&nbsp;" : ch}</span>`).join("");
+$("#sleepCat").innerHTML = catSVG(PALETTES.cream);
+$("#peekCat").innerHTML = catSVG(PALETTES.orange);
+$("#petCat").innerHTML = catSVG(PALETTES.gray);
+$$(".cats-row .cat").forEach(el => el.innerHTML = catSVG(PALETTES[el.dataset.c]));
+$("#cake").innerHTML = cakeSVG(CONFIG.candles);
+let fortunePool = [], fortuneSeen = false;
+$("#fortuneBtn").addEventListener("click", () => {
+  audio();
+  if (!fortunePool.length) fortunePool = [...CONFIG.fortunes].sort(() => Math.random() - .5);
+  const f = fortunePool.pop(), box = $("#fortune");
+  box.classList.remove("reveal"); void box.offsetWidth;
+  box.innerHTML = `<div class="em">${f.emoji}</div><p>${f.text}</p>`;
+  box.classList.add("reveal");
+  if (!fortuneSeen){ fortuneSeen = true; meow(); $("#fortuneBtn").textContent = "🔮 Bir tane daha"; }
+});
+const bday = new Date(CONFIG.birthday);
+$("#dateLine").textContent = `${bday.toLocaleDateString("tr-TR", {day: "numeric", month: "long", timeZone: "Europe/Istanbul"})} 🎉`;
+$("#foot").textContent = `🐾 ${CONFIG.from} tarafından ${CONFIG.name} için kodlandı`;
+$$(".cat").forEach(el => el.addEventListener("contextmenu", e => e.preventDefault()));
+
+// arka planda süzülen patiler
+for (let i = 0; i < 14; i++){
+  const s = document.createElement("span");
+  s.textContent = "🐾";
+  s.style.cssText = `left:${Math.random() * 100}%;font-size:${14 + Math.random() * 14}px;opacity:${.1 + Math.random() * .12};animation-duration:${16 + Math.random() * 14}s;animation-delay:-${Math.random() * 25}s`;
+  $("#bgPaws").appendChild(s);
+}
+
+/* ---------- 1) kilit & geri sayım ---------- */
+const preview = new URLSearchParams(location.search).has("onizleme");
+let cdTimer = null;
+function updateCountdown(){
+  const diff = bday - Date.now();
+  if (diff <= 0){ clearInterval(cdTimer); show("gift"); burst(); return; }
+  const s = Math.floor(diff / 1000);
+  $("#cdD").textContent = Math.floor(s / 86400);
+  $("#cdH").textContent = Math.floor(s % 86400 / 3600);
+  $("#cdM").textContent = Math.floor(s % 3600 / 60);
+  $("#cdS").textContent = s % 60;
+}
+if (CONFIG.lockUntilBirthday && Date.now() < bday && !preview){
+  show("lock"); updateCountdown(); cdTimer = setInterval(updateCountdown, 1000);
+} else show("gift");
+
+let taps = 0;
+$("#sleepCat").addEventListener("click", () => {
+  if (!CONFIG.secretTaps) return;
+  if (++taps >= CONFIG.secretTaps){ clearInterval(cdTimer); audio(); meow(); show("gift"); }
+});
+
+/* ---------- 2) hediye ---------- */
+$("#giftBtn").addEventListener("click", () => {
+  const g = $("#giftBtn");
+  if (g.classList.contains("open")) return;
+  audio(); meow();
+  g.classList.add("open"); $("#peekCat").classList.add("happy");
+  $(".hint").classList.add("hidden");
+  const r = g.getBoundingClientRect();
+  burst(160, r.left + r.width / 2, r.top + r.height * .45);
+  setTimeout(() => { show("party"); rain(130); $("#musicBtn").classList.remove("hidden"); }, 1500);
+});
+$("#musicBtn").addEventListener("click", playSong);
+
+/* ---------- 3) mumlar ---------- */
+const candles = [...$$(".candle")];
+let allDone = false, micStream = null, micNodes = [];
+const litCandles = () => candles.filter(c => !c.classList.contains("out"));
+function blowOut(c){
+  if (!c || c.classList.contains("out")) return;
+  c.classList.add("out"); puff();
+  if (!litCandles().length) onAllOut();
+}
+candles.forEach(c => c.addEventListener("click", () => { audio(); blowOut(c); }));
+
+$("#micBtn").addEventListener("click", async () => {
+  if (allDone) return;
+  audio();
+  const btn = $("#micBtn"), hint = $("#micHint");
+  if (!navigator.mediaDevices?.getUserMedia){ hint.textContent = "Mikrofon bu tarayıcıda yok. Mumlara dokunabilirsin 🙂"; return; }
+  setSession("play-and-record");
+  try{
+    micStream = await navigator.mediaDevices.getUserMedia({audio: {echoCancellation: false, noiseSuppression: false, autoGainControl: false}});
+  }catch(e){
+    setSession("playback");
+    hint.textContent = "Mikrofona izin verilmedi. Sorun değil, mumlara tek tek dokun 🙂"; return;
+  }
+  const ctx = audio(); if (!ctx) return;
+  const an = ctx.createAnalyser(); an.fftSize = 1024;
+  // referansları sakla + sessiz çıkışa bağla (Safari/Chrome aksi halde sessizlik okuyabiliyor)
+  const mute = ctx.createGain(); mute.gain.value = 0;
+  micNodes = [ctx.createMediaStreamSource(micStream), an, mute];
+  micNodes[0].connect(an); an.connect(mute); mute.connect(ctx.destination);
+  const data = new Uint8Array(an.fftSize);
+  btn.textContent = "🌬️ Şimdi üfle!"; btn.classList.add("listening");
+  $("#meter").classList.add("on"); hint.textContent = "Telefonun altına doğru güçlüce üfle";
+  let streak = 0, last = 0;
+  (function loop(t){
+    if (allDone) return;
+    an.getByteTimeDomainData(data);
+    let sum = 0; for (let i = 0; i < data.length; i++){ const v = (data[i] - 128) / 128; sum += v * v; }
+    const rms = Math.sqrt(sum / data.length);
+    $("#meterBar").style.width = Math.min(100, rms * 600) + "%";
+    $("#cake").classList.toggle("windy", rms > .04);
+    if (rms > .09){
+      streak++;
+      if (streak > 4 && t - last > 170){ const l = litCandles(); blowOut(l[Math.random() * l.length | 0]); last = t; }
+    } else streak = Math.max(0, streak - 1);
+    requestAnimationFrame(loop);
+  })(0);
+});
+
+function onAllOut(){
+  if (allDone) return;
+  allDone = true;
+  const hadMic = !!micStream;
+  if (micStream){ micStream.getTracks().forEach(t => t.stop()); micStream = null; setSession("playback"); }
+  micNodes.forEach(n => { try{ n.disconnect(); }catch(e){} }); micNodes = [];
+  $("#cake").classList.remove("windy");
+  $("#meter").classList.remove("on");
+  $("#micBtn").classList.add("hidden");
+  $("#cakeTitle").textContent = "Yaşasın! 🎉";
+  $("#cakeSub").innerHTML = "Tüm mumlar söndü.<br>Şimdi aşağı kaydır 👇";
+  $("#micHint").textContent = "";
+  const r = $("#cake").getBoundingClientRect();
+  burst(180, r.left + r.width / 2, r.top + r.height * .2);
+  setTimeout(() => { audio(); playSong(); }, hadMic ? 700 : 150);  // iPhone mikrofonu bıraktıktan sonra ses normale dönsün
+  $("#after").classList.remove("hidden");
+  setTimeout(() => $("#wish").scrollIntoView({behavior: "smooth", block: "center"}), 1400);
+}
+
+/* ---------- kediyi sev ---------- */
+const pet = $("#petCat"), wrap = $("#petWrap");
+let love = 0, loved = false, petTimer = null, stopPurr = null;
+const BITS = ["mrr", "prrr", "🐾", "✨", "mrrr~", "💕"];
+function startPet(e){
+  e.preventDefault();
+  if (petTimer) return;
+  pet.classList.add("happy"); stopPurr = startPurr();
+  petTimer = setInterval(() => {
+    love = Math.min(100, love + 2.5);
+    $("#loveBar").style.width = love + "%";
+    if (love >= 100 && !loved){
+      loved = true;
+      $("#loveTxt").textContent = "Kedi seni resmen evlat edindi 😻";
+      const r = wrap.getBoundingClientRect(); burst(120, r.left + r.width / 2, r.top + r.height / 3);
+    } else if (!loved) $("#loveTxt").textContent = `Kedi mutluluğu: %${Math.round(love)}`;
+    if (Math.random() < .45){
+      const b = document.createElement("span");
+      b.className = "bit"; b.textContent = BITS[Math.random() * BITS.length | 0];
+      b.style.left = (20 + Math.random() * 60) + "%"; b.style.top = (10 + Math.random() * 30) + "%";
+      b.style.setProperty("--dx", ((Math.random() - .5) * 80) + "px");
+      wrap.appendChild(b); setTimeout(() => b.remove(), 1300);
+    }
+  }, 100);
+}
+function endPet(){
+  clearInterval(petTimer); petTimer = null;
+  pet.classList.remove("happy");
+  if (stopPurr){ stopPurr(); stopPurr = null; }
+}
+pet.addEventListener("pointerdown", startPet);
+["pointerup", "pointerleave", "pointercancel"].forEach(ev => pet.addEventListener(ev, endPet));
+
+/* ---------- mektup (daktilo efekti) ---------- */
+let typed = false;
+new IntersectionObserver((entries, obs) => {
+  if (!entries[0].isIntersecting || typed) return;
+  typed = true; obs.disconnect();
+  const el = $("#letterText"), chars = Array.from(fill(CONFIG.message));
+  let i = 0; el.classList.add("typing");
+  (function type(){
+    if (i >= chars.length){ el.classList.remove("typing"); const s = $("#sign"); s.textContent = `— ${CONFIG.from} 🐾`; s.classList.add("on"); return; }
+    el.textContent += chars[i++];
+    setTimeout(type, chars[i - 1] === "\n" ? 180 : 32);
+  })();
+}, {threshold: .35}).observe($("#letter"));
+</script>
+</body>
+</html>
